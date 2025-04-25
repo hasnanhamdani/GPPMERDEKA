@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freshmag Landing Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-image: url('images/fotosection4.jpeg');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    section {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .quiz-card {
+      background: #fff0cc;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 320px;
+      margin: 1rem;
+    }
+    .answer {
+      background-color: #f37022;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 4px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #popupForm {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    #popupForm .form-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div id="fullpage">
+    <div class="section" id="section1">
+      <img src="images/fotosection1.jpeg" style="width:100%;height:100%;object-fit:contain">
+    </div>
+    <div class="section" id="section2">
+      <img src="images/fotosection2.jpeg" style="width:100%;height:100%;object-fit:contain">
+    </div>
+    <div class="section" id="section3" style="position: relative;">
+      <img src="images/fotosection3.jpeg" style="width:100%;height:100%;object-fit:contain;display:block;">
+      
+      <!-- Tombol transparan di atas gambar -->
+      <button 
+        onclick="fullpage_api.moveSectionDown()" 
+        style="
+          position: absolute;
+          left: 32%;
+          top: 68%;
+          transform: translate(-50%, -50%);
+          width: 275px;
+          height: 70px;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          z-index: 10;
+        ">
+      </button>
+    </div>    
+    <div class="section" id="section4" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <!-- Dekorasi sudut -->
+      <img src="images/dekor1.png" alt="Dekor Kiri Atas" style="position: absolute; top: 10; left: 0; width: 100px;">
+      <img src="images/dekor2.png" alt="Dekor Kanan Atas" style="position: absolute; top: 10; right: 0; width: 100px;">
+      <img src="images/dekor3.png" alt="Dekor Kiri Bawah" style="position: absolute; bottom: 0; left: 0; width: 100px;">
+      <img src="images/dekor4.png" alt="Dekor Kanan Bawah" style="position: absolute; bottom: 0; right: 0; width: 100px;">
+
+      <h2 style="color: #f37022; font-size: 2.5rem; font-weight: bold; text-align: center; width: 100%;">TEBAK LIRIK</h2>
+      <div style="display: flex; justify-content: center; flex-wrap: wrap;">    
+        <div class="quiz-card" style="background: #fff0cc; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 320px; margin: 1rem; display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <p><strong>A.</strong></p>
+          <p><em>Takluk ...<br><strong>Karna kau Freshmaaag</strong></em></p>
+          <button class="answer" data-question="1" data-correct="true">A. Asam lambungku</button>
+          <button class="answer" data-question="1">B. Perut kenyangku</button>
+          <button class="answer" data-question="1">C. Perut kembungku</button>
+        </div>
+        <div class="quiz-card" style="background: #fff0cc; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 320px; margin: 1rem; display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <p><strong>B.</strong></p>
+          <p><em><strong>GePePe</strong>, kan ada Freshmag!<br>Lambung nyaman, ...</em></p>
+          <button class="answer" data-question="2" data-correct="true">A. Karena Freshmag</button>
+          <button class="answer" data-question="2">B. Karena Diaa</button>
+          <button class="answer" data-question="2">C. Akupun Aman</button>
+        </div>
+        <div class="quiz-card" style="background: #fff0cc; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 320px; margin: 1rem; display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <p><strong>C.</strong></p>
+          <p><em>Ampunnnnn, ....,<br><strong>Kembungggg</strong></em></p>
+          <button class="answer" data-question="3">A. Racuuunn</button>
+          <button class="answer" data-question="3">B. Embuuunn</button>
+          <button class="answer" data-question="3"data-correct="true">C. Lambuungg</button>
+        </div>
+        <!-- Tombol Isi Data Diri Manual di Tengah -->
+<div style="width: 100%; display: flex; justify-content: center; margin-top: 3rem;">
+  <button onclick="document.getElementById('popupForm').style.display='flex'"
+    style="
+      padding: 1rem 3rem;
+      font-size: 1.25rem;
+      background-color: #f37022;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease;
+    "
+    onmouseover="this.style.transform='scale(1.05)'"
+    onmouseout="this.style.transform='scale(1)'"
+  >
+    ISI DATA DIRI
+  </button>
+</div>
+      </div>
+    </div>
+    <div class="section" id="section5">
+      <img src="images/fotosection5.jpeg" style="width:100%;height: 100%;object-fit:contain">
+    </div>
+    <div class="section" id="section6">
+      <img src="images/fotosection6.jpeg" style="width:100%;height:100%;object-fit:contain">
+      <div style="position: absolute; bottom: 40px; left: 17%; transform: translateX(-50%); display: flex; gap: 20px; justify-content: center; align-items: center;">
+        <a href="#" target="_blank"><img src="images/icon-shopee.png" alt="Shopee" style="height: 40px;"></a>
+        <a href="#" target="_blank"><img src="images/icon-tokopedia.png" alt="Tokopedia" style="height: 40px;"></a>
+        <a href="#" target="_blank"><img src="images/icon-instagram.png" alt="Instagram" style="height: 40px;"></a>
+        <a href="#" target="_blank"><img src="images/icon-tiktok.png" alt="TikTok" style="height: 40px;"></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupForm">
+    <div class="form-box">
+      <button onclick="closePopup()" style="position:absolute;top:10px;right:10px;">&times;</button>
+      <h3>Isi Data Diri Kamu</h3>
+      <form id="formPopup">
+        <input name="nama" type="text" placeholder="Nama" required style="width:100%;margin-bottom:1rem;">
+        <input name="usia" type="number" placeholder="Usia" required style="width:100%;margin-bottom:1rem;">
+        <input name="domisili" type="text" placeholder="Domisili" required style="width:100%;margin-bottom:1rem;">
+        <input name="buktiPembelian" type="file" accept="image/*" required style="width:100%;margin-bottom:1rem;">
+        <button type="submit" style="background:#f37022;color:white;padding:1rem;width:100%;border:none;border-radius:8px;font-weight:bold;">KIRIM DATA</button>
+      </form>
+      <p id="statusMessage" style="text-align:center;margin-top:1rem;"></p>
+    </div>
+  </div>
+
+  <div id="toast" style="visibility: hidden; min-width: 250px; background-color: #f37022; color: white; text-align: center; border-radius: 8px; padding: 1rem; position: fixed; z-index: 9999; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold; transition: opacity 0.5s ease, visibility 0.5s ease;">Terima kasih! Data kamu berhasil dikirim.</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
+  <script>
+    new fullpage('#fullpage', {
+      autoScrolling: true,
+      scrollHorizontally: false,
+      navigation: true
+    });
+
+    const answers = document.querySelectorAll('.answer');
+    const state = { 1: null, 2: null, 3: null };
+    answers.forEach(button => {
+      button.addEventListener('click', () => {
+        const q = button.dataset.question;
+        if (state[q] !== null) return;
+        const isCorrect = button.dataset.correct === 'true';
+        button.style.backgroundColor = isCorrect ? '#4CAF50' : '#FF4D4D';
+        button.style.color = 'white';
+
+        const all = document.querySelectorAll(`.answer[data-question="${q}"]`);
+        all.forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.correct === 'true') {
+            btn.style.backgroundColor = '#4CAF50';
+            btn.style.color = 'white';
+          }
+        });
+        state[q] = isCorrect;
+
+        if (state[1] !== null && state[2] !== null && state[3] !== null) {
+          setTimeout(() => document.getElementById('popupForm').style.display = 'flex', 500);
+        }
+      });
+    });
+
+    function closePopup() {
+      document.getElementById('popupForm').style.display = 'none';
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.style.visibility = "visible";
+      toast.style.opacity = "1";
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.visibility = "hidden";
+      }, 5000);
+    }
+
+    const formPopup = document.getElementById('formPopup');
+    formPopup.addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.target;
+      const file = form.buktiPembelian.files[0];
+      const reader = new FileReader();
+      const statusEl = document.getElementById('statusMessage');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      statusEl.textContent = 'Mengirim data, mohon tunggu...';
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = 0.6;
+
+      reader.onload = async () => {
+        const base64 = reader.result.split(',')[1];
+        const body = new FormData();
+        body.append('nama', form.nama.value);
+        body.append('usia', form.usia.value);
+        body.append('domisili', form.domisili.value);
+        body.append('buktiPembelian', base64);
+        body.append('filename', file.name);
+        body.append('mimeType', file.type);
+
+        try {
+          await fetch('https://script.google.com/macros/s/AKfycbxLrhYmt4Wsq5kdA_rBVdw8gBdemxRmaLdAeBkPTv_6NWgFpNcYDVUimO3ZoP4SuKsaRg/exec', {
+            method: 'POST',
+            body
+          });
+          showToast('Terima kasih! Data kamu berhasil dikirim.');
+          closePopup();
+          fullpage_api.moveTo(5);
+        } catch (err) {
+          alert('Gagal mengirim data.');
+        } finally {
+          statusEl.textContent = '';
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = 1;
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+
+    const music = document.getElementById('jinglefm');
+    const toggleBtn = document.getElementById('music-toggle');
+
+    toggleBtn.addEventListener('click', () => {
+      music.muted = !music.muted;
+      toggleBtn.textContent = music.muted ? '🔇' : '🔈';
+});
+
+  </script>
+
+  <audio id="jinglefm" autoplay loop>
+    <source src="audio/jinglefm.mp3" type="audio/wav">
+  </audio>
+  <button id="music-toggle" style="position: fixed; bottom: 20px; right: 20px; background-color: rgba(255, 115, 22, 0.9); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 18px; cursor: pointer; z-index: 9999;">🔈</button>
+  
+</body>
+</html>
