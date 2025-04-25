@@ -114,24 +114,9 @@
         </div>
         <!-- Tombol Isi Data Diri Manual di Tengah -->
 <div style="width: 100%; display: flex; justify-content: center; margin-top: 3rem;">
-  <button onclick="document.getElementById('popupForm').style.display='flex'"
-    style="
-      padding: 1rem 3rem;
-      font-size: 1.25rem;
-      background-color: #f37022;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s ease;
-    "
-    onmouseover="this.style.transform='scale(1.05)'"
-    onmouseout="this.style.transform='scale(1)'"
-  >
-    ISI DATA DIRI
-  </button>
+  <button id="openFormBtn" onclick="document.getElementById('popupForm').style.display='flex'" ...>
+  ISI DATA DIRI
+</button>
 </div>
       </div>
     </div>
@@ -168,6 +153,12 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
   <script>
+
+  // Saat halaman dimuat, nonaktifkan tombol ISI DATA DIRI
+document.getElementById('openFormBtn').disabled = true;
+document.getElementById('openFormBtn').style.opacity = 0.5;
+document.getElementById('openFormBtn').style.cursor = 'not-allowed';
+    
     new fullpage('#fullpage', {
       autoScrolling: true,
       scrollHorizontally: false,
@@ -193,6 +184,12 @@
           }
         });
         state[q] = isCorrect;
+        // Cek semua quiz sudah dijawab
+if (state[1] !== null && state[2] !== null && state[3] !== null) {
+  document.getElementById('openFormBtn').disabled = false;
+  document.getElementById('openFormBtn').style.opacity = 1;
+  document.getElementById('openFormBtn').style.cursor = 'pointer';
+}
 
         if (state[1] !== null && state[2] !== null && state[3] !== null) {
           setTimeout(() => document.getElementById('popupForm').style.display = 'flex', 500);
@@ -240,6 +237,10 @@
         body.append('jawabanQuizA', state[1] === null ? '' : (state[1] ? 'Benar' : 'Salah'));
         body.append('jawabanQuizB', state[2] === null ? '' : (state[2] ? 'Benar' : 'Salah'));
         body.append('jawabanQuizC', state[3] === null ? '' : (state[3] ? 'Benar' : 'Salah'));
+        
+for (var pair of body.entries()) {
+    console.log(pair[0]+ ', ' + pair[1]); 
+}
 
         try {
           await fetch('https://script.google.com/macros/s/AKfycbxLrhYmt4Wsq5kdA_rBVdw8gBdemxRmaLdAeBkPTv_6NWgFpNcYDVUimO3ZoP4SuKsaRg/exec', {
