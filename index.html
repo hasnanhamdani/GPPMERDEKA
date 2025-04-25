@@ -237,10 +237,9 @@
         body.append('filename', file.name);
         body.append('mimeType', file.type);
         
-        body.append('jawabanQuizA', state[1] === true ? 'Benar' : 'Salah');
-        body.append('jawabanQuizB', state[2] === true ? 'Benar' : 'Salah');
-        body.append('jawabanQuizC', state[3] === true ? 'Benar' : 'Salah');
-
+        body.append('jawabanQuizA', state[1] === null ? '' : (state[1] ? 'Benar' : 'Salah'));
+        body.append('jawabanQuizB', state[2] === null ? '' : (state[2] ? 'Benar' : 'Salah'));
+        body.append('jawabanQuizC', state[3] === null ? '' : (state[3] ? 'Benar' : 'Salah'));
 
         try {
           await fetch('https://script.google.com/macros/s/AKfycbxLrhYmt4Wsq5kdA_rBVdw8gBdemxRmaLdAeBkPTv_6NWgFpNcYDVUimO3ZoP4SuKsaRg/exec', {
@@ -258,6 +257,13 @@
           submitBtn.style.opacity = 1;
         }
       };
+      if (state[1] === null || state[2] === null || state[3] === null) {
+  alert('Mohon jawab semua pertanyaan kuis terlebih dahulu.');
+  statusEl.textContent = '';
+  submitBtn.disabled = false;
+  submitBtn.style.opacity = 1;
+  return;
+}
       reader.readAsDataURL(file);
     });
 
