@@ -115,18 +115,20 @@
 
   <div id="popupForm">
     <div class="form-box">
-      <button onclick="closePopup()" style="position:absolute;top:10px;right:10px;">&times;</button>
-      <h3>Isi Data Diri Kamu & Upload bukti pembelian Freshmag</h3>
-      <form id="formPopup">
-        <input name="nama" type="text" placeholder="Nama" required />
-        <input name="usia" type="number" placeholder="Usia" required />
-        <input name="domisili" type="text" placeholder="Domisili" required />
-        <input name="buktiPembelian" type="file" accept="image/*" required />
-        <button type="submit" style="background:#f37022;color:white;padding:1rem;width:100%;border:none;border-radius:8px;font-weight:bold;">KIRIM DATA</button>
+      <button onclick="closePopup()" style="position:absolute;top:10px;right:10px;font-size:1.2rem;">&times;</button>
+      <h3 style="margin-bottom: 1.5rem; text-align: center; font-size: 1.4rem;">Isi Data Diri Kamu & Upload bukti pembelian Freshmag</h3>
+      <form id="formPopup" style="display: flex; flex-direction: column; gap: 1rem;">
+        <div style="display: flex; gap: 1rem;">
+          <input name="nama" type="text" placeholder="Nama" required style="flex: 1; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px;">
+          <input name="usia" type="number" placeholder="Usia" required style="width: 100px; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px;">
+          <input name="domisili" type="text" placeholder="Domisili" required style="flex: 1; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px;">
+        </div>
+        <input name="buktiPembelian" type="file" accept="image/*" required style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;">
+        <button type="submit" style="background:#f37022;color:white;padding:1rem;width:100%;border:none;border-radius:8px;font-weight:bold;font-size:1rem;">KIRIM DATA</button>
       </form>
-      <p id="statusMessage" style="text-align:center;margin-top:1rem;"></p>
+      <p id="statusMessage" style="text-align:center;margin-top:1rem;color:#444;"></p>
     </div>
-  </div>
+  </div>  
 
   <div id="toast" style="visibility: hidden; min-width: 250px; background-color: #f37022; color: white; text-align: center; border-radius: 8px; padding: 1rem; position: fixed; z-index: 9999; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold;">Terima kasih! Data kamu berhasil dikirim.</div>
 
