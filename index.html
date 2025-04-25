@@ -89,6 +89,7 @@
   right: 0;
 }
 @media (max-width: 768px) {
+  
     h2 {
       font-size: 1.8rem !important;
       text-align: center;
@@ -118,7 +119,24 @@
     #popupForm input, #popupForm button {
       font-size: 1rem !important;
     }
-  }
+    #popupForm .form-box {
+    max-height: 90vh;
+    overflow-y: auto;
+    }
+
+    #popupForm form {
+      flex-direction: column;
+    }
+
+    #popupForm input {
+      width: 100% !important;
+    }
+
+    #popupForm form > div {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+}
   </style>
 </head>
 <body>
