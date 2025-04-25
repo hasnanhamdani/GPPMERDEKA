@@ -236,6 +236,11 @@
         body.append('buktiPembelian', base64);
         body.append('filename', file.name);
         body.append('mimeType', file.type);
+        
+        body.append('jawabanQuizA', state[1] === true ? 'Benar' : 'Salah');
+        body.append('jawabanQuizB', state[2] === true ? 'Benar' : 'Salah');
+        body.append('jawabanQuizC', state[3] === true ? 'Benar' : 'Salah');
+
 
         try {
           await fetch('https://script.google.com/macros/s/AKfycbxLrhYmt4Wsq5kdA_rBVdw8gBdemxRmaLdAeBkPTv_6NWgFpNcYDVUimO3ZoP4SuKsaRg/exec', {
