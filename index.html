@@ -227,9 +227,9 @@
 
   <div id="toast" style="visibility: hidden; min-width: 250px; background-color: #f37022; color: white; text-align: center; border-radius: 8px; padding: 1rem; position: fixed; z-index: 9999; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold;">Terima kasih! Data kamu berhasil dikirim.</div>
 
-  <audio id="jinglefm" autoplay loop>
-    <source src="audio/jinglefm.mp3" type="audio/mp3" />
-  </audio>
+ <audio id="jinglefm" loop>
+  <source src="audio/jinglefm.mp3" type="audio/mp3" />
+</audio>
   <button id="music-toggle" style="position: fixed; bottom: 20px; right: 20px; background-color: rgba(255, 115, 22, 0.9); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 18px; cursor: pointer; z-index: 9999;">🔈</button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
@@ -334,11 +334,17 @@
     }
 
     const music = document.getElementById('jinglefm');
-    const toggleBtn = document.getElementById('music-toggle');
-    toggleBtn.addEventListener('click', () => {
-      music.muted = !music.muted;
-      toggleBtn.textContent = music.muted ? '🔇' : '🔈';
-    });
+const toggleBtn = document.getElementById('music-toggle');
+
+toggleBtn.addEventListener('click', () => {
+  if (music.paused) {
+    music.play();
+    toggleBtn.textContent = '🔈';
+  } else {
+    music.pause();
+    toggleBtn.textContent = '🔇';
+  }
+});
   </script>
 </body>
 </html>
