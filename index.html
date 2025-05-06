@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Landing Page Freshmag: Ikuti kuis seru, upload bukti pembelian, dan menangkan hadiah menarik dari Freshmag!">
   <title>Freshmag Landing Page</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css" />
   <style>
@@ -143,6 +144,31 @@
       gap: 0.5rem;
     }
 }
+  @media (max-width: 768px) {
+    .quiz-card {
+      width: 100% !important;
+      margin: 1rem auto;
+    }
+
+    .section4-quiz-wrapper {
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    .section-title {
+      font-size: 2rem !important;
+      margin-bottom: 1.5rem;
+    }
+
+    .section4-dekor {
+      width: 50px !important;
+    }
+
+    #openFormBtn {
+      width: 90%;
+      font-size: 1rem;
+    }
+}
   </style>
 </head>
 <body>
@@ -166,7 +192,7 @@
       <img src="images/dekor3.png" alt="Dekor Kiri Bawah" class="section4-dekor bottom-left">
       <img src="images/dekor4.png" alt="Dekor Kanan Bawah" class="section4-dekor bottom-right">
       <h2 class="section-title">TEBAK LIRIK</h2>
-      <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+      <div class="section4-quiz-wrapper" style="display: flex; justify-content: center; flex-wrap: wrap;">
         <div class="quiz-card">
           <p><strong>A.</strong></p>
           <p><em>Takluk ...<br><strong>Karna kau Freshmaaag</strong></em></p>
@@ -200,10 +226,29 @@
     <div class="section" id="section6" style="position: relative; height: 100vh; overflow: hidden;">
       <img src="images/fotosection6.jpeg" 
            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; z-index: 0;">
-        <a href="#"><img src="images/icon-shopee.png" style="height: 40px;"></a>
-        <a href="#"><img src="images/icon-tokopedia.png" style="height: 40px;"></a>
-        <a href="#"><img src="images/icon-instagram.png" style="height: 40px;"></a>
-        <a href="#"><img src="images/icon-tiktok.png" style="height: 40px;"></a>
+      <div style="position: absolute; bottom: 16px; width: 100%; display: flex; justify-content: center; gap: 1rem; z-index: 10;">
+        <a href="https://www.instagram.com/freshmag.id" target="_blank"
+          style="position:absolute; bottom: 0px; left:38%; width: 30px; height: 30px; z-index: 10;
+          background-color: transparent; border-radius: 50%; opacity: 0.8;"></a>
+        <a href="https://www.facebook.com/madufreshmagasamlambung/" target="_blank"
+          style="position:absolute; bottom: 0px; left: 41.5%; width: 30px; height: 30px; z-index: 10;
+                  background-color: transparent; border-radius: 50%; opacity: 0.8;"></a>
+        <a href="https://www.tiktok.com/@freshmag.id" target="_blank"
+          style="position:absolute; bottom: 0px; left: 45.5%; width: 30px; height: 30px; z-index: 10;
+                  background-color: transparent; border-radius: 50%; opacity: 0.8;"></a>
+        <a href="https://www.youtube.com/@freshmagid2908" target="_blank"
+          style="position:absolute; bottom: 0px; left: 49%; width: 30px; height: 30px; z-index: 10;
+                  background-color: transparent; border-radius: 50%; opacity: 0.8;"></a>
+        <a href="https://shopee.co.id/freshmag.id?entryPoint=ShopBySearch&searchKeyword=freshmag%20official" target="_blank"
+          style="position:absolute; bottom: 0px; left: 53%; width: 30px; height: 30px; z-index: 10;
+                  background-color: transparent; border-radius: 50%; opacity: 0.8;"></a>
+        <a href="https://www.lazada.co.id/shop/freshmag" target="_blank"
+          style="position:absolute; bottom: 0px; left: 56.5%; width: 30px; height: 30px; z-index: 10;
+                  background-color: transparent; border-radius: 50%; opacity: 0.8;"></a>
+        <a href="https://www.tokopedia.com/freshmagofc target="_blank"
+          style="position:absolute; bottom: 0px; left: 60%; width: 30px; height: 30px; z-index: 10;
+                  background-color: transparent; border-radius: 50%; opacity: 0.8;"></a>
+      </div>
       </div>
     </div>
   </div>
@@ -211,17 +256,26 @@
   <div id="popupForm">
     <div class="form-box">
       <button onclick="closePopup()" style="position:absolute;top:10px;right:10px;font-size:1.2rem;">&times;</button>
-      <h3 style="margin-bottom: 1.5rem; text-align: center; font-size: 1.4rem;">Isi Data Diri Kamu & Upload bukti pembelian Freshmag</h3>
+      <h3 style="margin-bottom: 1rem; text-align: center; font-size: 1.5rem; font-weight: bold;">ISI DATA DIRI KAMU</h3>
       <form id="formPopup" style="display: flex; flex-direction: column; gap: 1rem;">
         <div style="display: flex; gap: 1rem;">
           <input name="nama" type="text" placeholder="Nama" required style="flex: 1; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px;">
           <input name="usia" type="number" placeholder="Usia" required style="width: 100px; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px;">
           <input name="domisili" type="text" placeholder="Domisili" required style="flex: 1; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px;">
         </div>
-        <input name="buktiPembelian" type="file" accept="image/*" required style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;">
+        <p style="text-align:center;font-size:0.95rem;color:#444;margin-bottom:0.5rem;">
+          Upload bukti pembelian untuk memperbesar kesempatan menang!
+        </p>
+        <input name="buktiPembelian" type="file" accept="image/*" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;">        
         <button type="submit" style="background:#f37022;color:white;padding:1rem;width:100%;border:none;border-radius:8px;font-weight:bold;font-size:1rem;">KIRIM DATA</button>
       </form>
       <p id="statusMessage" style="text-align:center;margin-top:1rem;color:#444;"></p>
+      <div id="uploadWarning" style="display:none; color:red; text-align:center; font-size:0.9rem; margin-top:0.5rem;">
+        Ukuran file terlalu besar (maks. 5MB). Silakan unggah ulang.
+      </div>
+      <div id="progressBar" style="display:none; width:100%; background:#eee; border-radius:6px; margin-top:1rem;">
+        <div style="height:10px; width:0%; background:#f37022; border-radius:6px;" id="progressFill"></div>
+      </div>      
     </div>
   </div>  
 
@@ -285,22 +339,64 @@
       statusEl.textContent = 'Mengirim data, mohon tunggu...';
       submitBtn.disabled = true;
       submitBtn.style.opacity = 0.6;
+      if (file) {
+        reader.onload = async () => {
+  const base64 = reader.result.split(',')[1];
+  const body = new FormData();
+  body.append('nama', form.nama.value);
+  body.append('usia', form.usia.value);
+  body.append('domisili', form.domisili.value);
+  body.append('jawabanQuizA', state[1] ? 'Benar' : 'Salah');
+  body.append('jawabanQuizB', state[2] ? 'Benar' : 'Salah');
+  body.append('jawabanQuizC', state[3] ? 'Benar' : 'Salah');
+  body.append('buktiPembelian', base64);
+  body.append('filename', file.name);
+  body.append('mimeType', file.type);
 
-      reader.onload = async () => {
-        const base64 = reader.result.split(',')[1];
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbxYF2OL8nc67MISsYk7-ASeziL5VUgr_spD5nwBgFs7tylPWPtJ-z5fa6Xg0xaXdo1Hdw/exec', {
+      method: 'POST',
+      body
+      
+    });
+    showToast('Terima kasih! Data kamu berhasil dikirim.');
+    closePopup();
+    fullpage_api.moveTo(5);
+  } catch (err) {
+    alert('Gagal mengirim data.');
+  } finally {
+    statusEl.textContent = '';
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = 1;
+  }
+  // Munculkan progress bar palsu
+document.getElementById("progressBar").style.display = "block";
+let progressFill = document.getElementById("progressFill");
+let width = 0;
+let progressInterval = setInterval(() => {
+  if (width >= 90) {
+    clearInterval(progressInterval);
+  } else {
+    width += 1;
+    progressFill.style.width = width + "%";
+  }
+}, 50);
+};
+  reader.readAsDataURL(file);
+  document.getElementById('progressBar').style.display = 'block';
+  document.getElementById('progressFill').style.width = '0%';
+      } else {
+  // kirim data TANPA file
         const body = new FormData();
         body.append('nama', form.nama.value);
         body.append('usia', form.usia.value);
         body.append('domisili', form.domisili.value);
-        body.append('buktiPembelian', base64);
-        body.append('filename', file.name);
-        body.append('mimeType', file.type);
         body.append('jawabanQuizA', state[1] ? 'Benar' : 'Salah');
         body.append('jawabanQuizB', state[2] ? 'Benar' : 'Salah');
         body.append('jawabanQuizC', state[3] ? 'Benar' : 'Salah');
-
+        
         try {
-          await fetch('https://script.google.com/macros/s/AKfycbzPPiGDGXTvLCtQ9KJZjZYcw2kndrVpTc90oEOkPZQCpR_oB-8kQ7HwD5uXu22-t9QKRw/exec', {
+          await fetch('https://script.google.com/macros/s/AKfycbxYF2OL8nc67MISsYk7-ASeziL5VUgr_spD5nwBgFs7tylPWPtJ-z5fa6Xg0xaXdo1Hdw/exec', {
             method: 'POST',
             body
           });
@@ -313,6 +409,12 @@
           statusEl.textContent = '';
           submitBtn.disabled = false;
           submitBtn.style.opacity = 1;
+          clearInterval(progressInterval);
+          progressFill.style.width = "100%";
+          setTimeout(() => {
+            document.getElementById("progressBar").style.display = "none";
+            progressFill.style.width = "0%";
+          }, 2000);
         }
       };
       reader.readAsDataURL(file);
